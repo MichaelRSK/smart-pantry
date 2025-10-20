@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import BasketIcon from "./BasketIcon";
 
 function hasSessionCookie() {
   if (typeof document === "undefined") return false;
@@ -67,13 +68,7 @@ export default function Navbar() {
             isHome ? "text-white" : "text-slate-900"
           }`}
         >
-          <Image
-            src="/logo.svg"
-            alt="SmartPantry logo"
-            width={30}
-            height={30}
-            className={isHome ? "rounded-md bg-white/80 p-1" : ""}
-          />
+          <BasketIcon size={32} className="" />
           <span>SmartPantry</span>
         </Link>
 
