@@ -33,8 +33,8 @@ export default function LoginPage() {
     try {
       // Mock "auth": set a cookie for 30 days
       document.cookie = `sp_session=dev; Max-Age=${60 * 60 * 24 * 30}; Path=/`;
-      // Send them to the pantry every time
-      router.replace("/pantry");
+      // Send them to the dashboard
+      router.replace("/");
     } catch (e) {
       setErr("Login failed. Please try again.");
     } finally {

@@ -1,7 +1,24 @@
 // app/page.tsx
 import Link from "next/link";
+import { cookies } from "next/headers";
+import Dashboard from "@/components/Dashboard";
 
-export default function MarketingHome() {
+export default async function Home() {
+  // Check if user is logged in
+  const cookieStore = await cookies();
+  const session = cookieStore.get("sp_session");
+  const isLoggedIn = !!session;
+
+  // Show dashboard for logged-in users
+  if (isLoggedIn) {
+    return <Dashboard />;
+  }
+
+  // Show marketing page for non-logged-in users
+  return <MarketingHome />;
+}
+
+function MarketingHome() {
   return (
     <main className="relative min-h-screen">
       {/* FULL-PAGE BACKGROUND (fixed) */}

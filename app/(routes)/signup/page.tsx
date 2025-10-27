@@ -49,8 +49,8 @@ export default function SignupPage() {
     try {
       // Mock "create account": set the session cookie
       document.cookie = `sp_session=dev; Max-Age=${60 * 60 * 24 * 30}; Path=/`;
-      // Always land on Pantry
-      router.replace("/pantry");
+      // Send them to the dashboard
+      router.replace("/");
     } catch (e) {
       setErr("Sign up failed. Please try again.");
     } finally {

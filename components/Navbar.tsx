@@ -14,8 +14,9 @@ function hasSessionCookie() {
 export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const [authed, setAuthed] = useState(false);
+  // Only use transparent navbar styling on home page when NOT logged in
+  const isHome = pathname === "/" && !authed;
 
   useEffect(() => {
     setAuthed(hasSessionCookie());
