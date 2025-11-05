@@ -1,6 +1,5 @@
 // app/layout.tsx
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "SmartPantry",
@@ -17,12 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* body must be transparent so the home background can show */}
       <body className="min-h-screen bg-transparent antialiased">
-        {/* Fixed navbar (client component) */}
-        <Navbar />
-        {/* Spacer so content isn't hidden under the fixed navbar */}
-        <div className="pt-16">{children}</div>
+        {children}
       </body>
     </html>
   );

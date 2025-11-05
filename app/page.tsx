@@ -1,7 +1,9 @@
 // app/page.tsx
 import Link from "next/link";
+import Image from "next/image";
 import { cookies } from "next/headers";
 import Dashboard from "@/components/Dashboard";
+import LandingPageFooter from "@/components/LandingPageFooter";
 
 export default async function Home() {
   // Check if user is logged in
@@ -20,107 +22,154 @@ export default async function Home() {
 
 function MarketingHome() {
   return (
-    <main className="relative min-h-screen">
-      {/* FULL-PAGE BACKGROUND (fixed) */}
-      <div
-        className="fixed inset-0 z-0 bg-no-repeat bg-cover bg-center pointer-events-none"
+    <main className="min-h-screen" style={{ backgroundColor: '#f9faf9' }}>
+      {/* HERO BANNER */}
+      <section 
+        className="relative min-h-[60vh] flex flex-col text-white bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://images.pexels.com/photos/1508666/pexels-photo-1508666.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1')",
-          backgroundAttachment: "fixed",
+          backgroundImage: "url('/Landing_hero_img.png')",
         }}
-      />
-      {/* Contrast overlay */}
-      <div className="fixed inset-0 z-0 bg-black/45 pointer-events-none" />
-
-      {/* CONTENT ABOVE BACKGROUND */}
-      <div className="relative z-10">
-        {/* HERO — shorter height + content near top */}
-        <section className="min-h-[55vh] flex flex-col items-center justify-start text-center px-4 text-white pt-28 md:pt-32">
-          <div>
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]">
-              Smart Pantry
-            </h1>
-            <p className="text-lg md:text-xl mb-8 opacity-95">
-              Welcome to food and waste management re-invented.
-            </p>
-            <div className="flex justify-center gap-4">
-              <Link
-                href="/login"
-                className="px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium transition"
-              >
-                Login
-              </Link>
-              <Link
-                href="/signup"
-                className="px-6 py-3 rounded-lg bg-white text-green-700 font-medium hover:bg-green-100 transition"
-              >
-                Sign Up
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ABOUT — pulled slightly upward */}
-        <section className="max-w-5xl mx-auto px-4 pt-4 pb-12 -mt-8 md:-mt-12">
-          <h2 className="text-3xl font-semibold text-center text-white drop-shadow mb-6">
-            About Us
-          </h2>
-          <div className="mx-auto max-w-3xl bg-white/85 backdrop-blur-md shadow-soft rounded-2xl p-6 text-slate-800">
-            Smart Pantry makes everyday food management simpler, smarter, and
-            more sustainable. Reduce waste, save money, and enjoy fresher meals —
-            powered by barcode scanning, freshness predictions, and recipe
-            recommendations.
-          </div>
-        </section>
-
-        {/* WHAT WE OFFER */}
-        <section className="max-w-6xl mx-auto px-4 pb-24 -mt-4">
-          <h2 className="text-3xl font-semibold text-center text-white drop-shadow mb-8">
-            What We Offer
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-soft">
-              <h3 className="font-semibold mb-2">✨ Smart Scanning</h3>
-              <p className="text-slate-600 text-sm">
-                Add groceries with barcode scanning or receipt OCR — auto-detect
-                product, category, and quantity.
-              </p>
-            </div>
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-soft">
-              <h3 className="font-semibold mb-2">🥬 Freshness Alerts</h3>
-              <p className="text-slate-600 text-sm">
-                Timely reminders before items expire — shelf-life estimates by
-                item type and purchase date.
-              </p>
-            </div>
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-soft">
-              <h3 className="font-semibold mb-2">🧑‍🍳 Recipe Magic</h3>
-              <p className="text-slate-600 text-sm">
-                Personalized suggestions using what you already have; filter by
-                preferences and diet.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="max-w-4xl mx-auto px-4 pb-24 text-center">
-          <div className="bg-white/85 backdrop-blur-md rounded-2xl shadow-soft p-8 text-slate-900">
-            <h3 className="text-2xl font-semibold mb-2">Join the Community</h3>
-            <p className="text-slate-600 mb-4">
-              Create a free account to access your Pantry, Recipes, and Shopping
-              List.
-            </p>
+      >
+        {/* Contrast overlay */}
+        <div className="absolute inset-0 bg-black/45" />
+        
+        {/* Top Bar with Buttons and Logo */}
+        <div className="relative z-10 flex items-center justify-between px-6 py-4">
+          {/* Login/Signup Buttons - Top Left */}
+          <div className="flex gap-3">
+            <Link
+              href="/login"
+              className="px-5 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium transition text-sm"
+            >
+              Login
+            </Link>
             <Link
               href="/signup"
-              className="px-6 py-3 rounded-lg bg-green-600 text-white font-medium hover:bg-green-700 transition"
+              className="px-5 py-2 rounded-lg bg-white text-green-700 font-medium hover:bg-green-100 transition text-sm"
             >
               Sign Up
             </Link>
           </div>
-        </section>
-      </div>
+          
+          {/* Logo - Top Right */}
+          <div>
+            <Image 
+              src="/Green_Basket_Icon.png" 
+              alt="SmartPantry Logo" 
+              width={48} 
+              height={48}
+              className="drop-shadow-lg"
+            />
+          </div>
+        </div>
+        
+        {/* Hero Content - Centered */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4">
+          <h1 
+            className="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Smart Pantry
+          </h1>
+          <p 
+            className="text-lg md:text-xl opacity-95"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Welcome to food and waste management re-invented.
+          </p>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="max-w-5xl mx-auto px-4 pt-16 pb-12">
+        <h2 className="text-3xl font-semibold text-center text-slate-800 mb-6">
+          About Us
+        </h2>
+        <div 
+          className="mx-auto max-w-3xl shadow-lg rounded-2xl p-8 text-slate-700 text-center"
+          style={{ backgroundColor: 'rgba(39, 174, 96, 0.1)' }}
+        >
+          Smart Pantry is designed to make everyday food management simpler, smarter, and more sustainable. Our mission is to help households reduce food waste, save money, and enjoy fresher meals by combining technology with practical kitchen habits. With barcode scanning, AI-driven freshness predictions, and recipe recommendations, Smart Pantry keeps you connected to what's in your kitchen without the guesswork.
+        </div>
+      </section>
+
+      {/* WHAT WE OFFER BANNER */}
+      <section 
+        className="relative min-h-[25vh] flex items-center justify-center text-white bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/What_we_offer.png')",
+        }}
+      >
+        {/* Contrast overlay */}
+        <div className="absolute inset-0 bg-black/45" />
+        
+        {/* Banner Content */}
+        <h2 
+          className="relative z-10 text-4xl md:text-5xl font-extrabold drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          What We Offer
+        </h2>
+      </section>
+
+      {/* WHAT WE OFFER CONTENT */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <div className="grid gap-6 md:grid-cols-3">
+          {/* Smart Scanning */}
+          <div className="flex flex-col items-center">
+            <div className="bg-white rounded-2xl p-6 shadow-lg w-full h-full flex flex-col">
+              <h3 className="font-semibold mb-3 text-xl">✨ Smart Scanning</h3>
+              <p className="text-slate-600 text-base flex-grow">
+                Quickly add groceries to your pantry with AI-powered barcode scanning and receipt OCR. Just snap a photo or scan an item, and Smart Pantry automatically identifies the product, category, and quantity, saving you time and avoiding manual entry.
+              </p>
+            </div>
+            <Image 
+              src="/Smart_scanning.png" 
+              alt="Smart Scanning" 
+              width={200} 
+              height={200}
+              className="mt-6"
+            />
+          </div>
+
+          {/* Freshness Alerts */}
+          <div className="flex flex-col items-center">
+            <div className="bg-white rounded-2xl p-6 shadow-lg w-full h-full flex flex-col">
+              <h3 className="font-semibold mb-3 text-xl">🥬 Freshness Alerts</h3>
+              <p className="text-slate-600 text-base flex-grow">
+                Stay one step ahead of food waste with timely reminders before items expire. Our freshness tracker predicts shelf life based on item type and purchase date, then alerts you so you can use ingredients while they're still at their best.
+              </p>
+            </div>
+            <Image 
+              src="/Freshness_alerts.png" 
+              alt="Freshness Alerts" 
+              width={200} 
+              height={200}
+              className="mt-6"
+            />
+          </div>
+
+          {/* Recipe Magic */}
+          <div className="flex flex-col items-center">
+            <div className="bg-white rounded-2xl p-6 shadow-lg w-full h-full flex flex-col">
+              <h3 className="font-semibold mb-3 text-xl">🧑‍🍳 Recipe Magic</h3>
+              <p className="text-slate-600 text-base flex-grow">
+                Turn what's in your kitchen into delicious meals with personalized recipe suggestions. Filter by dietary needs or preferences, and discover creative ways to combine ingredients you already have, reducing waste and making cooking easier.
+              </p>
+            </div>
+            <Image 
+              src="/Recipe_Magic.png" 
+              alt="Recipe Magic" 
+              width={200} 
+              height={200}
+              className="mt-6"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* LANDING PAGE FOOTER */}
+      <LandingPageFooter />
     </main>
   );
 }
