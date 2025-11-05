@@ -15,8 +15,6 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const [authed, setAuthed] = useState(false);
-  // Only use transparent navbar styling on home page when NOT logged in
-  const isHome = pathname === "/" && !authed;
 
   useEffect(() => {
     setAuthed(hasSessionCookie());
@@ -41,39 +39,34 @@ export default function Navbar() {
   }
 
   const links = [
-    { name: "Home", href: "/" },
     ...(authed
       ? [
+          { name: "Dashboard", href: "/dashboard" },
           { name: "Pantry", href: "/pantry" },
           { name: "Recipes", href: "/recipes" },
           { name: "Shopping", href: "/shopping" },
           { name: "Admin", href: "/admin" },
           { name: "About", href: "/about" },
         ]
-      : [{ name: "About", href: "/about" }]),
+      : [
+          { name: "Home", href: "/" },
+          { name: "About", href: "/about" }
+        ]),
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isHome
-          ? "bg-transparent backdrop-blur-md shadow-none"
-          : "bg-white/95 backdrop-blur-md shadow-sm"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        {/* Brand */}
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+      <div className="w-full flex h-16 items-center justify-between px-6">
+        {/* Brand - Flush Left */}
         <Link
-          href="/"
-          className={`flex items-center gap-2 font-semibold ${
-            isHome ? "text-white" : "text-slate-900"
-          }`}
+          href={authed ? "/dashboard" : "/"}
+          className="flex items-center gap-2 font-semibold text-slate-900"
         >
           <BasketIcon size={32} className="" />
           <span>SmartPantry</span>
         </Link>
 
-        {/* Links */}
+        {/* Links - Flush Right */}
         <div className="flex items-center gap-1">
           {links.map((link) => {
             const active = pathname === link.href;
@@ -84,8 +77,6 @@ export default function Navbar() {
                 className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
                   active
                     ? "bg-green-600 text-white"
-                    : isHome
-                    ? "text-white hover:bg-green-600/50"
                     : "text-slate-700 hover:bg-green-50"
                 }`}
               >
@@ -97,11 +88,7 @@ export default function Navbar() {
           {authed ? (
             <button
               onClick={handleLogout}
-              className={`ml-3 rounded-full px-4 py-1.5 text-sm font-medium transition ${
-                isHome
-                  ? "border border-white/70 text-white hover:bg-white/20"
-                  : "border border-slate-300 text-slate-700 hover:bg-slate-100"
-              }`}
+              className="ml-3 rounded-full px-4 py-1.5 text-sm font-medium transition border border-slate-300 text-slate-700 hover:bg-slate-100"
             >
               Log out
             </button>
@@ -115,11 +102,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/signup"
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
-                  isHome
-                    ? "border border-green-400 text-green-100 hover:bg-green-600/40"
-                    : "border border-green-600 text-green-700 hover:bg-green-50"
-                }`}
+                className="rounded-full px-4 py-1.5 text-sm font-medium transition border border-green-600 text-green-700 hover:bg-green-50"
               >
                 Sign up
               </Link>

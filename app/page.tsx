@@ -1,28 +1,16 @@
 // app/page.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { cookies } from "next/headers";
-import Dashboard from "@/components/Dashboard";
 import LandingPageFooter from "@/components/LandingPageFooter";
 
-export default async function Home() {
-  // Check if user is logged in
-  const cookieStore = await cookies();
-  const session = cookieStore.get("sp_session");
-  const isLoggedIn = !!session;
-
-  // Show dashboard for logged-in users
-  if (isLoggedIn) {
-    return <Dashboard />;
-  }
-
-  // Show marketing page for non-logged-in users
+export default function Home() {
+  // Always show the landing page at home route
   return <MarketingHome />;
 }
 
 function MarketingHome() {
   return (
-    <main className="min-h-screen" style={{ backgroundColor: '#f9faf9' }}>
+    <main className="min-h-screen -mt-16" style={{ backgroundColor: '#f9faf9' }}>
       {/* HERO BANNER */}
       <section 
         className="relative min-h-[60vh] flex flex-col text-white bg-cover bg-center"

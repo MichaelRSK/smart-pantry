@@ -34,7 +34,7 @@ export default function LoginPage() {
       // Mock "auth": set a cookie for 30 days
       document.cookie = `sp_session=dev; Max-Age=${60 * 60 * 24 * 30}; Path=/`;
       // Send them to the dashboard
-      router.replace("/");
+      router.replace("/dashboard");
     } catch (e) {
       setErr("Login failed. Please try again.");
     } finally {
@@ -43,7 +43,7 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="h-screen w-screen flex items-center justify-center bg-gray-50 px-4 overflow-hidden fixed inset-0" style={{overflow: 'hidden'}}>
+    <section className="h-screen w-screen flex items-center justify-center bg-gray-50 px-4 overflow-hidden fixed inset-0 -mt-16" style={{overflow: 'hidden'}}>
       <div className="w-full max-w-md">
         {/* Basket Icon */}
         <BasketIcon size={80} className="mb-4" />

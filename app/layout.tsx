@@ -1,5 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
+import ConditionalNavbar from "@/components/ConditionalNavbar";
 
 export const metadata = {
   title: "SmartPantry",
@@ -17,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-transparent antialiased">
-        {children}
+        {/* Navbar (hidden on landing and login pages) */}
+        <ConditionalNavbar />
+        {/* Spacer for navbar on pages where it shows */}
+        <div className="pt-16">{children}</div>
       </body>
     </html>
   );
