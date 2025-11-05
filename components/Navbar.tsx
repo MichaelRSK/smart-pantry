@@ -45,8 +45,8 @@ export default function Navbar() {
           { name: "Pantry", href: "/pantry" },
           { name: "Recipes", href: "/recipes" },
           { name: "Shopping", href: "/shopping" },
-          { name: "Admin", href: "/admin" },
           { name: "About", href: "/about" },
+          { name: "Admin", href: "/admin" },
         ]
       : [
           { name: "Home", href: "/" },
