@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import BasketIcon from "./BasketIcon";
 
 function hasSessionCookie() {

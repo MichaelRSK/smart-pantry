@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import type { Route } from "next";
 import { useMemo, useState } from "react";
 import { pantryItems, type PantryItem } from "@/data/pantry-items";
@@ -44,7 +45,7 @@ export default function DashboardHome() {
     <div className="max-w-6xl mx-auto px-4 py-8 grid gap-8">
       <header className="text-center grid gap-3">
         <div className="mx-auto">
-          <img src="/Green_Basket_Icon.png" width={56} height={56} alt="SmartPantry" />
+          <Image src="/Green_Basket_Icon.png" width={56} height={56} alt="SmartPantry" />
         </div>
         <h1 className="text-3xl font-semibold">SmartPantry</h1>
         <p className="text-slate-600">Welcome back! Here’s a quick look at your pantry.</p>
@@ -102,7 +103,7 @@ export default function DashboardHome() {
               <label className="text-sm text-slate-600">Sort</label>
               <select
                 value={sort}
-                onChange={e => setSort(e.target.value as any)}
+                onChange={e => setSort(e.target.value as "added" | "expires")}
                 className="border rounded-lg px-2 py-1 text-sm bg-white"
               >
                 <option value="added">Recently Added</option>

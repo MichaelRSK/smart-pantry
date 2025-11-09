@@ -51,7 +51,7 @@ export default function SignupPage() {
       document.cookie = `sp_session=dev; Max-Age=${60 * 60 * 24 * 30}; Path=/`;
       // Send them to the dashboard
       router.replace("/");
-    } catch (e) {
+    } catch {
       setErr("Sign up failed. Please try again.");
     } finally {
       setLoading(false);

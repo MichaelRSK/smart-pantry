@@ -109,7 +109,7 @@ export default function Dashboard() {
               </div>
               <h3 className="text-lg font-semibold text-slate-800 mb-1.5">Use Recipe Suggestions</h3>
               <p className="text-sm text-slate-600">
-                Get creative with recipes based on what's in your pantry. This helps use up ingredients before they expire.
+                Get creative with recipes based on what&apos;s in your pantry. This helps use up ingredients before they expire.
               </p>
             </div>
           </div>
