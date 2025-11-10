@@ -50,8 +50,8 @@ export default function SignupPage() {
       // Mock "create account": set the session cookie
       document.cookie = `sp_session=dev; Max-Age=${60 * 60 * 24 * 30}; Path=/`;
       // Send them to the dashboard
-      router.replace("/");
-    } catch {
+      router.replace("/dashboard");
+    } catch (e) {
       setErr("Sign up failed. Please try again.");
     } finally {
       setLoading(false);
