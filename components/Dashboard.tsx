@@ -33,6 +33,50 @@ export default function Dashboard() {
           </p>
         </header>
 
+        {/* Quick Actions */}
+        <div className="max-w-4xl mx-auto mb-8 md:mb-10">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+            <a 
+              href="/pantry"
+              className="bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group"
+            >
+              <div className="flex flex-col items-center text-center gap-3">
+                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                  <span className="text-3xl">📱</span>
+                </div>
+                <h3 className="text-lg font-semibold text-slate-800">Scan Item</h3>
+                <p className="text-sm text-slate-600">Quickly add items with barcode scanner</p>
+              </div>
+            </a>
+
+            <a 
+              href="/shopping"
+              className="bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group"
+            >
+              <div className="flex flex-col items-center text-center gap-3">
+                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                  <span className="text-3xl">🛒</span>
+                </div>
+                <h3 className="text-lg font-semibold text-slate-800">Shopping List</h3>
+                <p className="text-sm text-slate-600">View and manage your shopping list</p>
+              </div>
+            </a>
+
+            <a 
+              href="/recipes"
+              className="bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group"
+            >
+              <div className="flex flex-col items-center text-center gap-3">
+                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                  <span className="text-3xl">📖</span>
+                </div>
+                <h3 className="text-lg font-semibold text-slate-800">Find Recipes</h3>
+                <p className="text-sm text-slate-600">Discover recipes with your ingredients</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
         {/* Tips Section */}
         <div className="max-w-6xl mx-auto">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-slate-800 mb-4 md:mb-6">
