@@ -1,7 +1,5 @@
 # Smart Pantry: AI Food Waste Reducer
 
-**Vercel Link:** https://smart-pantry-six.vercel.app/
-
 **CSC-401 Senior Capstone Project**  
 **Team Name:** Pantry Guardians  
 **Trello Board:** https://trello.com/b/jgs7YbLN/smartpantry-capstone-project
